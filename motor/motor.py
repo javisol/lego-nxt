@@ -16,5 +16,6 @@ class Motor:
     def move(self, speed:int = 25, rotation:int = 360):
             self.motor.turn(speed, rotation) # full circle
 
+    #TODO: check protocol problems
     def brake(self):
         self.motor.brake()
