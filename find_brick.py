@@ -20,7 +20,7 @@ def motor():
 
 def ultra_sensor():
     with nxt.locator.find() as b:
-        sensor = b.get_sensor(nxt.sensor.Port.S2)
+        sensor = b.get_sensor(nxt.sensor.Port.S4)
         while True:
             distance_cm = sensor.get_sample()
             print(distance_cm)
@@ -84,13 +84,20 @@ def sound():
     with nxt.locator.find() as b:
         b.play_tone(440, 250) # set a volume on brick settings
 
+def shoot():
+    with nxt.locator.find() as b:
+        print("Found brick:", b.get_device_info()[0])
+        motor_front = b.get_motor(nxt.motor.Port.A)
+        motor_front.turn(100, 360) # full circle
+
 
 if __name__ == '__main__':
-    #sound()
+    sound()
     #motor()
+    shoot()
     #ultra_sensor()
     #rgb_sensor()
     #light_sensor()
     #touch_sensor()
-    touch_analog_sensor()
+    #touch_analog_sensor()
 
