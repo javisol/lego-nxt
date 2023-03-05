@@ -1,5 +1,6 @@
 import nxt.locator
 import nxt.motor
+import time
 
 MOTOR_PORTS = {
     "LEFT": "nxt.motor.Port.B",
@@ -16,6 +17,13 @@ class Motor:
     def move(self, speed:int = 25, rotation:int = 360):
             self.motor.turn(speed, rotation) # full circle
 
+    def move_time(self, speed:int = 25, seconds:int = 1):
+            self.motor.turn(speed)
+            time.sleep(seconds)
+            self.motor.idle()
+
+
     #TODO: check protocol problems
     def brake(self):
         self.motor.brake()
+        #maybe self.motor.idle()
